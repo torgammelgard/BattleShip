@@ -14,6 +14,7 @@ import javax.swing.*;
  * The ships are randomly oriented and placed.
  * The ships have at least one square in between each other.
  *
+ * Project was written in IntelliJ IDEA 15
  * @author Tor Gammelgard
  * @version 2015-10-15
  */
