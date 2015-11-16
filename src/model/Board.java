@@ -8,7 +8,8 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * A model for the Battleship's game board.
+ * A model for the Battleship's game board. Can place out ships randomly and start a new game.
+ * Handles basic operations to the board like setting a square or resetting the board.
  *
  * @author Tor Gammelgard
  * @version 2015-10-15
@@ -23,6 +24,10 @@ public class Board implements IBoard {
     private List<List<Square>> board;
     private List<BoardListener> listeners;
     private List<Ship> ships;
+
+    /**
+     * A counter for keeping track of how many times the <code>placeShips</code> is called recursively.
+     */
     private int fcnCallCounter = 0;
 
     public Board() {
@@ -57,6 +62,7 @@ public class Board implements IBoard {
      *
      * @param row a row index
      * @param col a column index
+     *
      * @return true if the square wasn't already hit
      */
     public boolean setSquare(int row, int col) {
@@ -80,6 +86,7 @@ public class Board implements IBoard {
      *
      * @param row a row index
      * @param col a column index
+     *
      * @return a copy of the square
      */
     public Square getSquare(int row, int col) {
@@ -120,7 +127,8 @@ public class Board implements IBoard {
     /**
      * Adds a listener to this board.
      *
-     * @param listener a reference to a board listener
+     * @param listener a reference to a BoardListener
+     *
      * @see BoardListener
      */
     public void addListener(BoardListener listener) {
@@ -130,7 +138,8 @@ public class Board implements IBoard {
     /**
      * Removes a listener.
      *
-     * @param listener
+     * @param listener a reference to a BoardListener
+     *
      * @see BoardListener
      */
     public void removeListener(BoardListener listener) {
@@ -142,6 +151,7 @@ public class Board implements IBoard {
      *
      * @param row the row index
      * @param col the column index
+     *
      * @return true if the location (row, col) is on the board
      */
     private boolean isOnBoard(int row, int col) {
@@ -154,6 +164,7 @@ public class Board implements IBoard {
      * Checks if the ship can be rotated to the next direction.
      *
      * @param ship the ship to be rotated
+     *
      * @return true if the ship can be rotated
      */
     private boolean isLegalRotation(Ship ship) {
@@ -176,6 +187,7 @@ public class Board implements IBoard {
      * Tries to rotate the ship.
      *
      * @param ship the ship to be rotated
+     *
      * @return true if the ship was successfully rotated
      */
     public boolean rotateShip(Ship ship) {
@@ -195,11 +207,12 @@ public class Board implements IBoard {
     }
 
     /**
-     * Tries to move the ship to a new location
+     * Tries to move the ship to a new location.
      *
      * @param ship the ship to be moved
      * @param row  destination row index
      * @param col  destination column index
+     *
      * @return true if the ship was successfully moved
      */
     public boolean moveShip(Ship ship, int row, int col) {
@@ -213,6 +226,11 @@ public class Board implements IBoard {
         return true;
     }
 
+    /**
+     * Erases a ship from the board.
+     *
+     * @param ship the ship to be removed
+     */
     private void eraseShip(Ship ship) {
         int r = ship.getRow();
         int c = ship.getCol();
@@ -232,48 +250,12 @@ public class Board implements IBoard {
 
 
     /**
-     * Checks so that the ship free squares all around it (including corners)
-     *
-     * @param ship
-     * @param r
-     * @param c
-     * @return
-     * @deprecated
-     */
-    private boolean isLegalPlaceBackup(Ship ship, int r, int c) {
-        Square sq = board.get(r).get(c);
-
-        for (int i = 0; i < ship.getLength(); i++) {
-            if (isOnBoard(r, c)) {
-                if (sq.isOccupied() && sq.getShip() != ship)
-                    return false;
-                for (int m = -1; m < 2; m++)
-                    for (int n = -1; n < 2; n++) {
-                        if (isOnBoard(r + m, c + n) && board.get(r + m).get(c + n).isOccupied() && board.get(r + m).get(c + n).getShip() != ship)
-                            return false;
-                    }
-
-            } else return false;
-
-            if (ship.getDirection().equals(Direction.RIGHT))
-                c++;
-            else if (ship.getDirection().equals(Direction.DOWN))
-                r++;
-            else if (ship.getDirection().equals(Direction.LEFT))
-                c--;
-            else if (ship.getDirection().equals(Direction.UP))
-                r--;
-        }
-        return true;
-    }
-
-
-    /**
      * Checks if the place (r, c) is a legal placement of the ship.
      *
      * @param ship - ship to be placed
      * @param r    - row
      * @param c    - col
+     *
      * @return - true if (r, c) is a legal place
      */
     private boolean isLegalPlace(Ship ship, int r, int c) {
@@ -375,6 +357,7 @@ public class Board implements IBoard {
      * @param ship - the ship to be placed
      * @param r    - row
      * @param c    - column
+     *
      * @return - true if ship was placed
      */
     private boolean placeShip(Ship ship, int r, int c) {
@@ -405,6 +388,7 @@ public class Board implements IBoard {
      *
      * @param ships - All ships to be placed
      * @param i     - index in the ships array (use 0 to start this method)
+     *
      * @return - true if all ships were successfully placed
      */
     public boolean placeShips(Ship[] ships, int i) {
@@ -444,9 +428,10 @@ public class Board implements IBoard {
 
     /**
      * Tries to place all ships randomly on the board by first placing them on the board and then
-     * randomly rotate and move them (1000 times).
+     * randomly tries to rotate and move them (1000 times).
      *
      * @param s an array of ships to be placed
+     *
      * @return true if all the ships were successfully placed
      */
     public boolean placeAllShipsRandomly(Ship[] s) {
@@ -454,9 +439,6 @@ public class Board implements IBoard {
         fcnCallCounter = 0;
 
         Collections.addAll(ships, s);
-/*        for (int i = 0; i < s.length; i++){
-            ships.add(s[i].getCopy());
-        }*/
 
         Ship[] ship_arr = new Ship[ships.size()];
 
@@ -469,15 +451,18 @@ public class Board implements IBoard {
 
         Random rand = new Random(System.currentTimeMillis());
 
-        int tmp;
-        int c = 0;
-        int inc;
-        Ship ship;
+        int tmp;                    // temporary int for picking random numbers
+        int c = 0;                  // counter for successful translations and rotations
+        int numberOfTries = 0;      // counter for upper limit of number of tries
+        int inc;                    // randomly picked increment (-1 or 1)
+        Ship ship;                  // randomly picked ship to be moved
 
-        while (c < 1000) {
+        while (c < 1000 || numberOfTries > 10000) {
+            numberOfTries++;
             ship = ships.get(rand.nextInt(ships.size()));
             tmp = rand.nextInt(3);
             inc = 2 * rand.nextInt(2) - 1;
+            // randomly pick to move randomly in row or col direction or rotate the ship
             if (tmp == 0) {
                 if (moveShip(ship, ship.getRow() + inc, ship.getCol()))
                     c++;
@@ -496,6 +481,7 @@ public class Board implements IBoard {
      * Starts a new game.
      *
      * @param ships an array of ships
+     *
      * @return true if a new game was started
      */
     public boolean newGame(Ship[] ships) {
@@ -527,6 +513,8 @@ public class Board implements IBoard {
         }
 
         /**
+         * Copy getter
+         *
          * @return a copy of this square
          */
         public Square getCopy() {
@@ -538,22 +526,47 @@ public class Board implements IBoard {
             return square;
         }
 
+        /**
+         * Setter
+         *
+         * @param hit true if square is hit
+         */
         private void setHit(boolean hit) {
             this.hit = hit;
         }
 
+        /**
+         * Getter
+         *
+         * @return true if the square is occupied
+         */
         public boolean isOccupied() {
             return occupied;
         }
 
+        /**
+         * Setter
+         *
+         * @param occupied true if square is occupied
+         */
         private void setOccupied(boolean occupied) {
             this.occupied = occupied;
         }
 
+        /**
+         * Getter
+         *
+         * @return a reference to the ship
+         */
         public Ship getShip() {
             return ship;
         }
 
+        /**
+         * Setter
+         *
+         * @param ship the ship
+         */
         private void setShip(Ship ship) {
             this.ship = ship;
         }
