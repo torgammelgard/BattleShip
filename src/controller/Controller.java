@@ -12,7 +12,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 /**
- * This controller handles user events for example mouse and key events.
+ * This controller handles user events for example mouse events.
  *
  * @author Tor Gammelgard
  * @version 2015-10-15
@@ -43,30 +43,65 @@ public class Controller implements MouseMotionListener, MouseListener, ActionLis
         setState(State.NORMAL);
     }
 
+    /**
+     * Getter
+     *
+     * @return a reference to the MainFrame
+     */
     public MainFrame getMainFrame() {
         return mainFrame;
     }
 
+    /**
+     * Getter
+     *
+     * @return a reference to the GameDriver
+     */
     public GameDriver getGameDriver() {
         return gameDriver;
     }
 
+    /**
+     * Getter
+     *
+     * @return the selected show level (checkbox)
+     */
     public ShowLevel getShowLevel() {
         return mainFrame.isShowSelected() ? ShowLevel.SHOW : ShowLevel.HIDE;
     }
 
+    /**
+     * Setter
+     *
+     * @param state new state
+     */
     void setState(State state) {
         this.state = state;
     }
 
+    /**
+     * Getter
+     *
+     * @return the current state
+     */
     State getState() {
         return state;
     }
 
+    /**
+     * Updates the MissedPanel
+     *
+     * @param s the message to be displayed
+     */
     public void updateMissedPanel(String s) {
         outputPanel.setText(s);
     }
 
+    /**
+     * Updates the ShipsStatusPanel
+     *
+     * @param ship the ship to be updated
+     */
     public void updateShipsStatusPanel(Ship ship) {
         getMainFrame().getShipsStatusPanel().update(ship);
     }
