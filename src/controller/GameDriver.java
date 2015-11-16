@@ -17,10 +17,16 @@ public class GameDriver {
 
     private Board board;
 
+    /**
+     * @return the only ship needed for grade G
+     */
     private Ship[] createShipsForGradeG() {
         return new Ship[]{Ship.createShip(Ship.ShipType.SUBMARINE)};
     }
 
+    /**
+     * @return the ships needed for grade VG
+     */
     private Ship[] createShipsForGradeVG() {
         Ship[] ships = new Ship[]{
                 Ship.createShip(Ship.ShipType.CARRIER),
@@ -42,10 +48,22 @@ public class GameDriver {
         board = new Board();
     }
 
+    /**
+     * Getter
+     *
+     * @return a reference to the Board
+     */
     public Board getBoard() {
         return board;
     }
 
+    /**
+     * Starts a new game based on the selected grade level
+     *
+     * @param gradeLevel the selected grade level
+     *
+     * @return true if a all ships could be placed on the board and a new game was started
+     */
     public boolean startGame(GradeLevel gradeLevel) {
         if (gradeLevel == GradeLevel.GODKAND) {
             if (!board.newGame(createShipsForGradeG()))
@@ -62,6 +80,11 @@ public class GameDriver {
         return true;
     }
 
+    /**
+     * Handles a click on a square label
+     *
+     * @param sq the square label which was clicked
+     */
     public void squareClicked(BoardPanel.SquareLabel sq) {
 
         // set the square and check if it was a hit or miss
