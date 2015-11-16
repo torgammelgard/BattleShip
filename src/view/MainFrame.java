@@ -102,6 +102,8 @@ public class MainFrame extends JFrame {
     }
 
     /**
+     * Getter
+     *
      * @return a reference to the <code>OutputPanel</code>
      */
     public OutputPanel getOutputPanel() {
@@ -109,6 +111,8 @@ public class MainFrame extends JFrame {
     }
 
     /**
+     * Getter
+     *
      * @return a reference to the <code>ShipStatusPanel</code>
      */
     public ShipsStatusPanel getShipsStatusPanel() {
@@ -116,6 +120,8 @@ public class MainFrame extends JFrame {
     }
 
     /**
+     * Getter
+     *
      * @return a reference to the <code>BoardPanel</code>
      */
     public BoardPanel getBoardPanel() {
@@ -123,6 +129,8 @@ public class MainFrame extends JFrame {
     }
 
     /**
+     * Getter
+     *
      * @return a reference to the <code>FXPane</code>
      */
     public FXPane getFXPane() {
@@ -130,6 +138,8 @@ public class MainFrame extends JFrame {
     }
 
     /**
+     * Getter
+     *
      * @return true if grade checkbox is selected
      */
     public boolean isGradeSelected() {
@@ -137,6 +147,8 @@ public class MainFrame extends JFrame {
     }
 
     /**
+     * Getter
+     *
      * @return true if the show checkbox is selected
      */
     public boolean isShowSelected() {
@@ -169,7 +181,7 @@ public class MainFrame extends JFrame {
     }
 
     /**
-     * A custom checkbox
+     * A custom checkbox.
      */
     public class MyCheckBox extends JCheckBox {
         MyCheckBox(String s) {
@@ -184,7 +196,7 @@ public class MainFrame extends JFrame {
     }
 
     /**
-     * A custom button
+     * A custom button.
      */
     public class RoundRedButton extends JButton {
         RoundRedButton() {

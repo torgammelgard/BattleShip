@@ -91,10 +91,20 @@ public class BoardPanel extends JPanel implements BoardListener {
             reset();
         }
 
+        /**
+         * Getter
+         *
+         * @return the row index
+         */
         public int getRow() {
             return row;
         }
 
+        /**
+         * Getter
+         *
+         * @return the column index
+         */
         public int getCol() {
             return col;
         }
@@ -134,6 +144,11 @@ public class BoardPanel extends JPanel implements BoardListener {
         }
 
 
+        /**
+         * Creates the background by cutting out a square in a bigger water picture.
+         *
+         * @return a background image with only water
+         */
         private BufferedImage createWaterBackground() {
             ImageIcon waterbgImgIcon;
             waterbgImgIcon = new ImageIcon("src/res/waterbg.jpg", "waterbg");
@@ -145,6 +160,10 @@ public class BoardPanel extends JPanel implements BoardListener {
             return waterBackground.getSubimage(SQUARE_WIDTH * col, SQUARE_WIDTH * row, SQUARE_WIDTH, SQUARE_WIDTH);
         }
 
+        /**
+         * Creates an image by drawing a ship (filled circle) to the water background image
+         * @return a background image with a ship on it
+         */
         private BufferedImage createShipBackground() {
             BufferedImage buff = new BufferedImage(waterBackground.getWidth(), waterBackground.getHeight(), BufferedImage.TYPE_INT_ARGB);
             Graphics2D g2 = buff.createGraphics();
@@ -155,6 +174,11 @@ public class BoardPanel extends JPanel implements BoardListener {
             return buff;
         }
 
+        /**
+         * Creates an image by drawing randomly placed boxes on the background picture, representing a miss.
+         *
+         * @return a background image with dark spots on it
+         */
         private BufferedImage createWaterMissBackground() {
             BufferedImage buff = new BufferedImage(waterBackground.getWidth(), waterBackground.getHeight(), BufferedImage.TYPE_INT_ARGB);
             Graphics2D g2 = buff.createGraphics();
@@ -179,6 +203,11 @@ public class BoardPanel extends JPanel implements BoardListener {
             return buff;
         }
 
+        /**
+         * Creates a background image by adding red spots on the background image with the ship on it.
+         *
+         * @return a background image with ship and red spots on it
+         */
         private BufferedImage createShipHitBackground() {
             BufferedImage buff = new BufferedImage(waterBackground.getWidth(), waterBackground.getHeight(), BufferedImage.TYPE_INT_ARGB);
             Graphics2D g2 = buff.createGraphics();
