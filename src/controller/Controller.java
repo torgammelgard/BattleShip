@@ -12,10 +12,12 @@ import java.awt.*;
 import java.awt.event.*;
 
 /**
+ * This controller handles user events for example mouse and key events.
+ *
  * @author Tor Gammelgard
  * @version 2015-10-15
  */
-public class Controller implements MouseMotionListener, MouseListener, KeyListener, ActionListener, ItemListener {
+public class Controller implements MouseMotionListener, MouseListener, ActionListener, ItemListener {
 
     /**
      * State - the current state of the program (package modifier since it should be reached from GameDriver also)
@@ -49,10 +51,6 @@ public class Controller implements MouseMotionListener, MouseListener, KeyListen
         return gameDriver;
     }
 
-    @Override
-    public void keyTyped(KeyEvent e) {
-    }
-
     public ShowLevel getShowLevel() {
         return mainFrame.isShowSelected() ? ShowLevel.SHOW : ShowLevel.HIDE;
     }
@@ -73,15 +71,7 @@ public class Controller implements MouseMotionListener, MouseListener, KeyListen
         getMainFrame().getShipsStatusPanel().update(ship);
     }
 
-    @Override
-    public void keyPressed(KeyEvent e) {
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-
-    }
-
+    // START - Implementation of MouseListener
     @Override
     public void mouseClicked(MouseEvent e) {
 
@@ -125,8 +115,9 @@ public class Controller implements MouseMotionListener, MouseListener, KeyListen
     public void mouseExited(MouseEvent e) {
 
     }
+    // END - Implementation of MouseListener
 
-    // Implementation of MouseMotionListener
+    // START - Implementation of MouseMotionListener
     @Override
     public void mouseDragged(MouseEvent e) {
         mouseMoved(e);
@@ -141,9 +132,11 @@ public class Controller implements MouseMotionListener, MouseListener, KeyListen
             getMainFrame().getFXPane().setShowCrossHair(false);
         }
     }
+    // END - Implementation of MouseMotionListener
+
 
     /**
-     * Start restart
+     * Starts a new game
      */
     private void startrestart() {
         if (!mainFrame.isGradeSelected()) {
@@ -158,7 +151,9 @@ public class Controller implements MouseMotionListener, MouseListener, KeyListen
     /**
      * ActionListener implementation
      *
-     * @param e
+     * @param e an ActionEvent
+     *
+     * @see MainFrame
      */
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -171,7 +166,9 @@ public class Controller implements MouseMotionListener, MouseListener, KeyListen
      * ItemListener implementation
      * Used for JComboBox
      *
-     * @param e - the ItemEvent
+     * @param e - an ItemEvent
+     *
+     * @see MainFrame
      */
     @Override
     public void itemStateChanged(ItemEvent e) {

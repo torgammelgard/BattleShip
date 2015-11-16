@@ -85,13 +85,11 @@ public class MainFrame extends JFrame {
         add(boardPanel, BorderLayout.CENTER);
         add(outputPanel, BorderLayout.SOUTH);
         add(right_panel, BorderLayout.EAST);
-        setFocusable(true);                                         // or keylistener doesn't respond
 
         // add listeners
         startRestartButton.setActionCommand(START_RESTART);
         startRestartButton.addActionListener(controller);
         addMouseListener(controller);
-        addKeyListener(controller);
 
         setTitle("Battleship");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
