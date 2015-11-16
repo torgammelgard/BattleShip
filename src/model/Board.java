@@ -341,10 +341,16 @@ public class Board implements IBoard {
             this.c = c;
         }
 
+        /**
+         * @return the row
+         */
         int getR() {
             return r;
         }
 
+        /**
+         * @return the column
+         */
         int getC() {
             return c;
         }
@@ -391,7 +397,7 @@ public class Board implements IBoard {
      *
      * @return - true if all ships were successfully placed
      */
-    public boolean placeShips(Ship[] ships, int i) {
+    private boolean placeShips(Ship[] ships, int i) {
         int r = 0;
         int c = 0;
         fcnCallCounter++;
@@ -434,15 +440,25 @@ public class Board implements IBoard {
      *
      * @return true if all the ships were successfully placed
      */
-    public boolean placeAllShipsRandomly(Ship[] s) {
+    private boolean placeAllShipsRandomly(Ship[] s) {
 
         fcnCallCounter = 0;
 
         Collections.addAll(ships, s);
 
-        Ship[] ship_arr = new Ship[ships.size()];
+        // Upper constraint : if the total length of all ships is greater than the
+        // total number of squares on the board, then placement is impossible.
+        int totLength = 0;
+        for (Ship ship : s) {
+            totLength += ship.getLength();
+        }
+        if (totLength > ROWS*COLUMNS) {
+            System.out.println("Upper constr");
+            return false;
+        }
 
-        if (placeShips(ships.toArray(ship_arr), 0)) {
+        // go ahead and try to find a place for all the ships
+        if (placeShips(s, 0)) {
             System.out.println("Found place for all ships! : " + fcnCallCounter);
         } else {
             System.out.println("Didn't find place for all ships! : " + fcnCallCounter);

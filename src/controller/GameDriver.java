@@ -6,6 +6,8 @@ import model.Ship;
 import view.BoardPanel;
 
 /**
+ * This game driver controls the behaviour of the game and handles the game flow.
+ *
  * @author Tor Gammelgard
  * @version 2015-10-18
  */
