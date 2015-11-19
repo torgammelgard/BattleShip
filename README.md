@@ -1,4 +1,4 @@
-# BattleShip
+# Battleship
  * The player plays Battleship against the computer. The computer doesn't play against the player.
  * The board consists of 10x10 squares.
  * There's a Start/Restart button.
