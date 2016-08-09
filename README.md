@@ -7,3 +7,6 @@
  * There are four different types of ships.
  * The ships are randomly oriented and placed.
  * The ships have at least one square in between each other.
+
+# Instructions to run the application
+ * set VM options to : -splash:src/res/splash.png in your IDE
