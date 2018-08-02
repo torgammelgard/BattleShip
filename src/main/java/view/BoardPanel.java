@@ -151,7 +151,7 @@ public class BoardPanel extends JPanel implements BoardListener {
          */
         private BufferedImage createWaterBackground() {
             ImageIcon waterbgImgIcon;
-            waterbgImgIcon = new ImageIcon("src/res/waterbg.jpg", "waterbg");
+            waterbgImgIcon = new ImageIcon("src/main/java/res/waterbg.jpg", "waterbg");
             waterBackground = new BufferedImage(SQUARE_WIDTH * rows, SQUARE_WIDTH * columns, BufferedImage.TYPE_INT_ARGB);
             Graphics2D g2 = waterBackground.createGraphics();
             waterbgImgIcon.paintIcon(null, g2, 0, 0);

@@ -21,15 +21,15 @@ public class ShipsStatusPanel extends JPanel {
     public static final int HEIGHT = 200;
 
     private static final int SCALEFACTOR = 4;
-    private BufferedImage carrier = createBuffImg(new ImageIcon("src/res/carrier.png", "carrier"));
-    private BufferedImage battleship = createBuffImg(new ImageIcon("src/res/battleship.png", "battleship"));
-    private BufferedImage submarine = createBuffImg(new ImageIcon("src/res/submarine.png", "submarine"));
-    private BufferedImage patrolboat = createBuffImg(new ImageIcon("src/res/patrolboat.png", "patrolboat"));
+    private BufferedImage carrier = createBuffImg(new ImageIcon("src/main/java/res/carrier.png", "carrier"));
+    private BufferedImage battleship = createBuffImg(new ImageIcon("src/main/java/res/battleship.png", "battleship"));
+    private BufferedImage submarine = createBuffImg(new ImageIcon("src/main/java/res/submarine.png", "submarine"));
+    private BufferedImage patrolboat = createBuffImg(new ImageIcon("src/main/java/res/patrolboat.png", "patrolboat"));
 
-    private BufferedImage carrierFire = createBuffImg(new ImageIcon("src/res/carrierFire.png", "carrierfire"));
-    private BufferedImage battleshipFire = createBuffImg(new ImageIcon("src/res/battleshipFire.png", "battleshipfire"));
-    private BufferedImage submarineFire = createBuffImg(new ImageIcon("src/res/submarineFire.png", "submarinefire"));
-    private BufferedImage patrolboatFire = createBuffImg(new ImageIcon("src/res/patrolboatFire.png", "patrolboatfire"));
+    private BufferedImage carrierFire = createBuffImg(new ImageIcon("src/main/java/res/carrierFire.png", "carrierfire"));
+    private BufferedImage battleshipFire = createBuffImg(new ImageIcon("src/main/java/res/battleshipFire.png", "battleshipfire"));
+    private BufferedImage submarineFire = createBuffImg(new ImageIcon("src/main/java/res/submarineFire.png", "submarinefire"));
+    private BufferedImage patrolboatFire = createBuffImg(new ImageIcon("src/main/java/res/patrolboatFire.png", "patrolboatfire"));
 
     private ArrayList<Ship> ships;
     private HashMap<Integer, ShipLabel> shipLabels;

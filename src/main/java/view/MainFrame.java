@@ -188,8 +188,8 @@ public class MainFrame extends JFrame {
             setFont(new Font("Serif", Font.BOLD, 24));
             setText(s);
             setFocusable(false);
-            setIcon(new ImageIcon("src/res/checkbox.png"));
-            setSelectedIcon(new ImageIcon("src/res/checkboxselected.png"));
+            setIcon(new ImageIcon("src/main/java/res/checkbox.png"));
+            setSelectedIcon(new ImageIcon("src/main/java/res/checkboxselected.png"));
             setContentAreaFilled(false);
             setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
         }
@@ -200,9 +200,9 @@ public class MainFrame extends JFrame {
      */
     public class RoundRedButton extends JButton {
         RoundRedButton() {
-            setIcon(new ImageIcon("src/res/restartbutton.png"));
-            setSelectedIcon(new ImageIcon("src/res/"));
-            setPressedIcon(new ImageIcon("src/res/restartbuttonpressed.png"));
+            setIcon(new ImageIcon("src/main/java/res/restartbutton.png"));
+            setSelectedIcon(new ImageIcon("src/main/java/res/"));
+            setPressedIcon(new ImageIcon("src/main/java/res/restartbuttonpressed.png"));
             setContentAreaFilled(false);
             setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
         }
