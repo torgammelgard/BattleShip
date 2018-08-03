@@ -8,5 +8,8 @@
  * The ships are randomly oriented and placed.
  * The ships have at least one square in between each other.
 
-# Instructions to run the application
+# Instructions to run the application (Version 1.0)
  * set VM options to : -splash:src/res/splash.png in your IDE
+ 
+# Instructions to run the application (Version 1.1)
+ * java -jar ./target/battleship-1.1-SNAPSHOT.jar
