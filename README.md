@@ -15,7 +15,7 @@
  * set VM options to : -splash:src/res/splash.png in your IDE
  
 # Instructions to run the application (Version 1.1)
- - git clone https://github.com/torgammelgard/Battleship.git
- - cd Battleship
+ - git clone https://github.com/torgammelgard/battleship.git
+ - cd battleship
  - mvn package
  - java -jar ./target/battleship-1.1-SNAPSHOT.jar
