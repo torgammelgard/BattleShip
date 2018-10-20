@@ -1,4 +1,5 @@
 ![release version](https://img.shields.io/badge/release-v1.1-blue.svg)
+![battleship branch master](https://travis-ci.org/torgammelgard/Battleship.svg?branch=master)
 
 # Battleship
  * The player plays Battleship against the computer. The computer doesn't play against the player.
