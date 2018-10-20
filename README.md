@@ -1,4 +1,4 @@
-[![release version](https://img.shields.io/badge/release-v1.1-blue.svg)]
+[![release version](https://img.shields.io/badge/release-v1.1-blue.svg)][version]
 
 # Battleship
  * The player plays Battleship against the computer. The computer doesn't play against the player.
