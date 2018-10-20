@@ -11,6 +11,8 @@
  * The ships are randomly oriented and placed.
  * The ships have at least one square in between each other.
 
+![battleship picture](https://torgammelgardjava.files.wordpress.com/2015/11/2015-11-17-03_11_39-battleship.png)
+
 # Instructions to run the application (Version 1.0)
  * set VM options to : -splash:src/res/splash.png in your IDE
  
